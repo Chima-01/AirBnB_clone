@@ -21,12 +21,12 @@ class BaseModel:
             if "created_at" in kwargs:
                 c_time = kwargs["created_at"]
                 created_time = datetime.strptime(c_time, time_format)
-                kwargs["created_at"] = created_time.isoformat()
+                kwargs["created_at"] = created_time
 
             if "update_at" in kwargs:
                 u_time = kwargs["updated_at"]
                 updated_time = datetime.strptime(u_time, time_format)
-                kwargs["updated_at"] = updated_time.isoformat()
+                kwargs["updated_at"] = updated_time
 
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -50,9 +50,10 @@ class BaseModel:
 
     def to_dict(self):
         """Return dictionary representation of object"""
-        return {
-            "class:": self.__class__.__name__,
-            "id": self.id,
-            "created_at": self.created_at.isoformat(),
-            "updated_at": self.updated_at.isoformat()
-        }
+        instance_dict = self.__dict__.copy()
+        instance_dict["__class__"] = self.__class__.__name__
+        instance_dict["id"] = self.id
+        instance_dict["created_at"] = self.created_at.isoformat()
+        instance_dict["updated_at"] = self.updated_at.isoformat()
+
+        return instance_dict

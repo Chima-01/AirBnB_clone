@@ -50,10 +50,8 @@ class BaseModel:
 
     def to_dict(self):
         """Return dictionary representation of object"""
-        instance_dict = self.__dict__.copy()
-        instance_dict["__class__"] = self.__class__.__name__
-        instance_dict["id"] = self.id
-        instance_dict["created_at"] = self.created_at.isoformat()
-        instance_dict["updated_at"] = self.updated_at.isoformat()
-
-        return instance_dict
+        dictionary = self.__dict__.copy()
+        dictionary.update({'__class__': self.__class__.name,
+                           'created_at': self.created_at.isoformat(),
+                           'updated_at': self.updated_at.isoformat()})
+        return dictionary

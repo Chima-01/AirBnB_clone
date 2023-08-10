@@ -1,27 +1,40 @@
 #!/usr/bin/python3
-import datetime
+from datetime import datetime
 import uuid
 """Defines Base Model class"""
 
 
 class BaseModel:
-    """Base model class
-    
-    Args:
+    """
+    Attributes:
+        args: This particular attribut will be unused in basemodel
+        kwargs(dict): This updates an instance of basemodel according to the
+                      key, value argument provided in kwargs
         id (str): unique user id
-        created_at (datetime obj): date account created
-        updated_at (datetime obj): dtae account updated
     """
 
-    def __init__(self, *args, **kwargs): #**kwargs
+    def __init__(self, *args, **kwargs):
         """Creates instance of base model (constructor)"""
         if len(kwargs) != 0:
             time_format = "%Y-%m-%dT%H:%M:%S.%f"
-            for (key, value) in kwargs.items():
-                
+
+            if "created_at" in kwargs:
+                c_time = kwargs["created_at"]
+                created_time = datetime.strptime(c_time, time_format)
+                kwargs["created_at"] = created_time
+
+            if "update_at" in kwargs:
+                u_time = kwargs["updated_at"]
+                updated_time = datetime.strptime(u_time, time_format)
+                kwargs["updated_at"] = updated_time
+
+            for key, value in kwargs.items():
+                if key != "__class__":
+                    setattr(self, key, value)
         else:
+            """ Creates an id, time instance was created, and update
+                if kwargs is empty"""
             self.id = str(uuid.uuid4())
-            #creates instance of datetime object
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
 
@@ -36,7 +49,7 @@ class BaseModel:
         return self.updated_at
 
     def to_dict(self):
-        """Return dictionary of object (added strings to dict then return dict)"""
+        """Return dictionary representation of object"""
         dictionary = self.__dict__.copy()
         dictionary.update({'__class__': self.__class__.name,
                            'created_at': self.created_at.isoformat(),

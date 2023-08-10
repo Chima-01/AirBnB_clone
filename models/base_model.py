@@ -36,10 +36,9 @@ class BaseModel:
         return self.updated_at
 
     def to_dict(self):
-        """Return dictionary representation of object"""
-        return {
-            "class:": self.__class__.__name__,
-            "id": self.id,
-            "created_at": self.created_at.isoformat(),
-            "updated_at": self.updated_at.isoformat()
-        }
+        """Return dictionary of object (added strings to dict then return dict)"""
+        dictionary = self.__dict__.copy()
+        dictionary.update({'__class__': self.__class__.name,
+                           'created_at': self.created_at.isoformat(),
+                           'updated_at': self.updated_at.isoformat()})
+        return dictionary

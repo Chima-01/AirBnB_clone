@@ -15,10 +15,18 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        """ makes key with obj class and id """
+        """ Makes key with obj class and id """
         ob_name = obj.__class.__name__
         key = "{}.{}".format(ob_name, obj.id)
         self.__objects[key] = obj
 
     def save(self):
-        """ serialize objects to json file """
+        """ Serialize objects to json file """
+        serialized_dict = {}
+        for key, value in self.__objects.items():
+            serialized[key] = value.to_dict()
+        with open(self.__file_path, 'w') as f:
+            f.write(json.dumps(serialized_dict))
+
+    def reload(self):
+        """Deserialize json file to objects if file exists"""

@@ -1,11 +1,12 @@
 #!/usr/bin/python3
+"""Defines Base Model class"""
 from datetime import datetime
 import uuid
-"""Defines Base Model class"""
 
 
 class BaseModel:
-    """
+    """Class that defines BaseModel object
+
     Attributes:
         args: This particular attribute will be unused in basemodel
         kwargs(dict): This updates an instance of basemodel according to the

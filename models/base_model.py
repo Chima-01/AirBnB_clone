@@ -2,6 +2,11 @@
 """Defines Base Model class"""
 from datetime import datetime
 import uuid
+<<<<<<< HEAD
+import models
+"""Defines Base Model class"""
+=======
+>>>>>>> master
 
 
 class BaseModel:
@@ -24,7 +29,7 @@ class BaseModel:
                 created_time = datetime.strptime(c_time, time_format)
                 kwargs["created_at"] = created_time
 
-            if "update_at" in kwargs:
+            if "updated_at" in kwargs:
                 u_time = kwargs["updated_at"]
                 updated_time = datetime.strptime(u_time, time_format)
                 kwargs["updated_at"] = updated_time
@@ -38,6 +43,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """Prints [<class name>] (<self.id>) <self.__dict__>"""
@@ -47,12 +53,12 @@ class BaseModel:
     def save(self):
         """Updates public instance attribute 'updated_at' w curr datetime"""
         self.updated_at = datetime.now()
-        return self.updated_at
+        models.storage.save()
 
     def to_dict(self):
         """Return dictionary representation of object"""
         dictionary = self.__dict__.copy()
-        dictionary.update({'__class__': self.__class__.__name__,
-                           'created_at': self.created_at.isoformat(),
-                           'updated_at': self.updated_at.isoformat()})
+        dictionary["__class__"] = self.__class__.__name__
+        dictionary["created_at"] = self.created_at.isoformat()
+        dictionary["updated_at"] = self.updated_at.isoformat()
         return dictionary

@@ -1,12 +1,8 @@
 #!/usr/bin/python3
-"""Defines Base Model class"""
 from datetime import datetime
 import uuid
-<<<<<<< HEAD
 import models
 """Defines Base Model class"""
-=======
->>>>>>> master
 
 
 class BaseModel:

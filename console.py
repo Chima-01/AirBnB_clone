@@ -5,7 +5,10 @@ import cmd
 import sys
 
 
-""" HBNB CONSOLE """
+""" HBNB CONSOLE 
+implementing a console to store and retrive data in
+from json file
+"""
 
 
 class HBNBCommand(cmd.Cmd):

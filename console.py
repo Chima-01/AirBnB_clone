@@ -13,13 +13,12 @@ class HBNBCommand(cmd.Cmd):
     __total_instance = storage.all()
 
     def do_quit(self, line):
-        """ type quit to exit console
-
+        """Quit command to exit the program
         """
         return True
 
     def do_EOF(self, line):
-        """ Exits on signal CTRL + d """
+        """ Exits console on command and sig CTRL + D"""
         print()
         return True
 
@@ -119,12 +118,6 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
         else:
             print("** no instance found **")
-
-    def postloop(self):
-        """ Exits console on signal CTRL + D"""
-        if not sys.stdin.isatty():
-            print()
-        pass
 
 
 if __name__ == '__main__':

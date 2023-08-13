@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unit test for base model"""
+"""Unit test for BaseModel module"""
 import json
 import datetime
 import unittest

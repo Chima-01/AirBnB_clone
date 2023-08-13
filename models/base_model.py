@@ -1,14 +1,13 @@
 #!/usr/bin/python3
 from datetime import datetime
 import uuid
-#from models.__init__.py import storage
 """Defines Base Model class"""
 
 
 class BaseModel:
     """
     Attributes:
-        args: This particular attribut will be unused in basemodel
+        args: This particular attribute will be unused in basemodel
         kwargs(dict): This updates an instance of basemodel according to the
                       key, value argument provided in kwargs
         id (str): unique user id
@@ -47,7 +46,6 @@ class BaseModel:
     def save(self):
         """Updates public instance attribute 'updated_at' w curr datetime"""
         self.updated_at = datetime.now()
-#       storage.save(self)
         return self.updated_at
 
     def to_dict(self):

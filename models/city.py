@@ -3,6 +3,7 @@
 from .base_model import BaseModel
 from .state import State
 
+
 class City(BaseModel):
     """City class
     Args:
@@ -15,4 +16,3 @@ class City(BaseModel):
     def __init__(self, *args, **kwargs):
         """Creates new instance of city"""
         super().__init__(*args, **kwargs)
-        #state_id = 

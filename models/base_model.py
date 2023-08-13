@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from datetime import datetime
 import uuid
-from .__init__.py import storage
+#from models.__init__.py import storage
 """Defines Base Model class"""
 
 
@@ -47,7 +47,7 @@ class BaseModel:
     def save(self):
         """Updates public instance attribute 'updated_at' w curr datetime"""
         self.updated_at = datetime.now()
-        storage.save(self)
+#       storage.save(self)
         return self.updated_at
 
     def to_dict(self):

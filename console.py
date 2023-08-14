@@ -126,6 +126,15 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** no instance found **")
 
+    def do_count(self, class_name):
+        """Counts number of instances in a class"""
+        cnt = 0
+        instances = storage.all()
+        for (key, value) in instances.items():
+            key_split = key.split(".")
+            if key_split[0] == class_name:
+                cnt = cnt + 1
+        print(cnt)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

@@ -3,6 +3,12 @@
 
 import cmd
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.place import Place
+from models.city import City
+from models.review import Review
+from models.amenity import Amenity
 from models import storage
 import sys
 
@@ -16,7 +22,8 @@ from json file
 class HBNBCommand(cmd.Cmd):
     """ creating a commandline interpreter """
     prompt = "(hbnb) "
-    __classes = {'BaseModel'}
+    __classes = {'BaseModel', 'User', 'State', 'Place', 'City',
+                 'Review', 'Amenity'}
     __total_instance = storage.all()
 
     def do_quit(self, line):
@@ -40,7 +47,9 @@ class HBNBCommand(cmd.Cmd):
         elif args not in self.__classes:
             self.error(2)
         else:
-            total_cls = {'BaseModel': BaseModel}
+            total_cls = {'BaseModel': BaseModel, 'User': User, 'City': City,
+                         'Review': Review, 'Amenity': Amenity, 'State': State,
+                         'Place': Place}
             instance = total_cls[args]()
             instance.save()
             print(instance.id)
@@ -135,6 +144,15 @@ class HBNBCommand(cmd.Cmd):
             if key_split[0] == class_name:
                 cnt = cnt + 1
         print(cnt)
+
+    def cmdloop(self):
+        try:
+            super().cmdloop()
+        except KeyboardInterrupt:
+            print()
+            self.prompt = "(hbnb) "
+            self.cmdloop()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

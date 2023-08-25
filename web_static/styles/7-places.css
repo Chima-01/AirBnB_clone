@@ -1,0 +1,30 @@
+.container .places {
+  min-height: fit-content;
+}
+
+.container .places h1 {
+  text-align: left;
+  font-size: 30px;
+}
+
+.container .places .article_home {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.container .places  .article_home article {
+  width: 390px;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #ff5a5f;
+  border-radius: 4px;
+}
+.container .places h2 {
+  font-size: 30px;
+}
+
+.container .places  .article_home article:last-child {
+  margin-left: 25%;
+}

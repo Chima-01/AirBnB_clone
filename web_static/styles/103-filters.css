@@ -1,0 +1,99 @@
+h2, h4, h3 {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+section.filter {
+  width: 100%;
+  background-color: white;
+  height: 70px;
+  border: 1px #dddddd solid;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+section.filter .content
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 50%;
+}
+
+section.filter .content .locations {
+  border-right: #dddddd 1px solid;
+  width: 50%;
+}
+
+section.filter .content .la {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+section.filter .content .la h3 {
+  font-weight: 600;
+  padding: 0.5rem;
+}
+
+section.filter .content .la h4  {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+section.filter .content .la .popover {
+  margin-top: 18px;
+  padding: 1rem 0;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: none;
+}
+
+section.filter .content .la .popover h2 {
+  padding: 0 0 0 2rem;
+  text-align: left;
+  font-size: 16px;
+}
+
+section.filter .content .la .popover ul {
+  list-style: none;
+  text-align: left;
+}
+
+section.filter .content .locations:hover .popover {
+  display: block;
+}
+
+section.filter .content .amenities:hover .popover {
+  display: block;
+}
+.container section.filter .btn {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.container section.filter button {
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #ff5a5f;
+  height: 48px;
+  margin-right: 30px;
+  width: 50%;
+  border: none;
+  border-radius: 4px;
+}
+
+.container section.filter button:hover {
+  opacity: 90%;
+}
+
+
